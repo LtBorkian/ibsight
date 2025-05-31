@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBsight Spotify Playlists</title>
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    background: white;
+}
+
+.background-aura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 40% 40%, rgba(73, 37, 255, 0.2) 0%, transparent 60%);
+    z-index: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar .logo {
+    width: 100px;
+    height: auto;
+}
+
+.navbar nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    border: 2px solid navy;
+    color: navy;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.left-section {
+    max-width: 50%;
+}
+
+.title-image {
+    margin-top: -120px;
+    width: 450px;
+    height: auto;
+}
+
+.follow-container {
+    position: relative;
+    width: 290px;
+    margin-left: 130px;
+}
+
+.follow-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* perfect centering */
+    z-index: 2;  /* make sure text is on top */
+    color: white;  /* so it's readable */
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: -68px;
+}
+
+.follow-button img {
+    width: 290px;
+    height: auto;
+    display: block;
+    z-index: 1;   /* image is under the text */
+    margin-left: -120px;
+    margin-top: -140px;
+}
+
+
+.playlist-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.playlist-buttons button {
+    border: 2px solid navy;
+    border-radius: 20px;
+    background: transparent;
+    color: navy;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.playlist-buttons button:hover {
+    background: navy;
+    color: white;
+}
+
+.right-section {
+    width: 30%;
+}
+
+.recommended-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    color: navy;
+}
+
+.album-cover {
+    width: 100%;
+    padding-top: 0%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.recommended-card h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.recommended-card p {
+    font-size: 14px;
+}
+
+.ibsight-footer {
+      background: linear-gradient(175deg, #000080, #1a1aff);
+      color: white;
+      padding: 100px 150px;
+      font-family: 'Poppins', sans-serif;
+      width: 1450px;
+      height: 650px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      max-width: 50%;
+    }
+
+    .footer-logo {
+      width: 600px;
+      margin-bottom: -100px;
+      margin-top: -200px;
+      margin-left: 10px;
+    }
+
+    .footer-left p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: 50px;
+      margin-top: -100px;
+    }
+
+    .subscribe-section input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      padding: 8px;
+      width: 300px;
+      outline: none;
+    }
+
+    .subscribe-section input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .subscribe-section button {
+      background: white;
+      color: #000080;
+      padding: 10px 25px;
+      border-radius: 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .get-started {
+      margin-top: 50px;
+      margin-left: 50px;
+      text-align: left;
+    }
+
+    .get-started h4 {
+      font-weight: bold;
+    }
+
+    .get-started ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .get-started ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .get-started ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .get-started p {
+      margin-top: 20px;
+      font-size: 0.8rem;
+    }
+
+    .socials {
+      margin-top: 375px;
+    }
+
+    .socials p {
+      font-style: italic;
+    }
+
+    .icons a img {
+      gap: 1rem;
+      width: 30px;
+      margin-left: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+</style>
+</head>
+
+<body>
+  <div class="background-aura"></div>
+
+  <header class="navbar">
+      <img src="ibsight logo blue.png" alt="IBsight Logo" class="logo">
+      <nav>
+          <a href="home.html">🏠 Home</a>
+          <a href="planit.html">📄 Plan.it</a>
+          <a href="#">🎓 University Planner</a>
+          <a href="#">📚 Scholar's Shelf</a>
+          <a href="#">🌿 DP Core</a>
+          <a href="spotify.html">🎵 Spotify Playlists</a>
+          <a href="newsletter.html">📰 Newsletter</a>
+      </nav>
+  </header>
+
+  <main class="content">
+      <div class="left-section">
+          <img src="title page.png" alt="Spotify Playlists Title" class="title-image">
+
+        <div class="follow-container">
+          <p class="follow-text">ibsight on spotify :))</p>
+          <a href="https://open.spotify.com/" target="_blank" class="follow-button">
+            <img src="follow ibsight on spotify.png" alt="Follow IBsight on Spotify">
+          </a>
+        </div>
+
+          <div class="playlist-buttons">
+              <a href="https://open.spotify.com/" target="_blank"><button>Playlist Name</button></a>
+              <a href="https://open.spotify.com/" target="_blank"><button>Playlist Name</button></a>
+              <a href="https://open.spotify.com/" target="_blank"><button>Playlist Name</button></a>
+              <a href="https://open.spotify.com/" target="_blank"><button>Playlist Name</button></a>
+              <a href="https://open.spotify.com/" target="_blank"><button>Playlist Name</button></a>
+          </div>
+      </div>
+
+      <div class="right-section">
+          <div class="recommended-card">
+              <img src="examplealbumcover.png" alt="Spotify Album Cover" class="album-cover" href="https://open.spotify.com/" target="_blank">
+              <h2>Rosanna</h2>
+              <p>Made by Toto in 1983, Rosanna is amank.</p>
+              <a href="https://open.spotify.com/" target="_blank"><button>Open in Spotify</button></a>
+          </div>
+      </div>
+  </main>
+
+  
+
+  <footer class="ibsight-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="footer.png" alt="Want more of ibsight?" class="footer-logo">
+        <div class="subscribe-section">
+          <input type="email" placeholder="Later they will input their email here">
+          <button>Subscribe</button>
+        </div>
+        <div class="get-started">
+          <h4>GET STARTED</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Plan.it</a></li>
+            <li><a href="#">University Tracker</a></li>
+            <li><a href="#">Scholar's Shelf</a></li>
+            <li><a href="#">DP Core</a></li>
+          </ul>
+          <p>© 2025 ibsight. All rights reserved.</p>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="socials">
+          <p>Stay connected with us!!</p>
+          <div class="icons">
+            <a href="#"><img src="footer (3).png" alt="Mail"></a>
+            <a href="#"><img src="13.png" alt="Instagram"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>

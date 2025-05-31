@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ibsight DPCore Planner</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            background: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .navbar nav a {
+            margin-left: 15px;
+            text-decoration: none;
+            border: 2px solid navy;
+            color: navy;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ibsight-footer {
+      background: linear-gradient(175deg, #000080, #1a1aff);
+      color: white;
+      padding: 100px 150px;
+      font-family: 'Poppins', sans-serif;
+      width: 1450px;
+      height: 650px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      max-width: 50%;
+    }
+
+    .footer-logo {
+      width: 600px;
+      margin-bottom: -100px;
+      margin-top: -200px;
+      margin-left: 10px;
+    }
+
+    .footer-left p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: 50px;
+      margin-top: -100px;
+    }
+
+    .subscribe-section input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      padding: 8px;
+      width: 300px;
+      outline: none;
+    }
+
+    .subscribe-section input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .subscribe-section button {
+      background: white;
+      color: #000080;
+      padding: 10px 25px;
+      border-radius: 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .get-started {
+      margin-top: 50px;
+      margin-left: 50px;
+      text-align: left;
+    }
+
+    .get-started h4 {
+      font-weight: bold;
+    }
+
+    .get-started ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .get-started ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .get-started ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .get-started p {
+      margin-top: 20px;
+      font-size: 0.8rem;
+    }
+
+    .socials {
+      margin-top: 375px;
+    }
+
+    .socials p {
+      font-style: italic;
+    }
+
+    .icons a img {
+      gap: 1rem;
+      width: 30px;
+      margin-left: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .grid-background {
+  background-image:
+    linear-gradient(to right, #e0e0f0 1px, transparent 1px),
+    linear-gradient(to bottom, #e0e0f0 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.notion-wrapper {
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  background-color: white;
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.notion-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.hero {
+  background-color: #fff;
+  padding-bottom: -180px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero-logo {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  margin-bottom: 20px;
+  margin-left: -420px;
+  margin-top: -150px;
+  padding-right: -50px;
+}
+
+.hero-subtext {
+  width: 100%;
+  max-width: 675px;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: -525px;
+  margin-left: -525px;
+}
+
+.hero-icon {
+  width: 325px;
+  margin-right: -220px;
+  margin-bottom: 150px;
+  padding-left: -50px;
+  height: center;
+}
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <img src="ibsight logo blue.png" alt="IBsight Logo" class="logo">
+    <nav>
+        <a href="home.html">🏠 Home</a>
+        <a href="planit.html">📄 Plan.it</a>
+        <a href="unitracker.html">🎓 University Planner</a>
+        <a href="scholarsshelf.html">📚 Scholar's Shelf</a>
+        <a href="dpcore.html">🌿 DP Core</a>
+        <a href="spotify.html">🎵 Spotify Playlists</a>
+        <a href="newsletter.html">📰 Newsletter</a>
+    </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-content">
+      <img src="title.png" alt="Plan.it logo" class="hero-logo" /> <img src="icons.png" alt="Right icon" class="hero-icon" /> 
+      <div class="hero-subtext-wrapper">
+        <img src="text.png" alt="Description" class="hero-subtext" />
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="grid-background">
+    <div class="notion-wrapper">
+      <iframe 
+        src="https://www.notion.so/your-notion-link" 
+        frameborder="0" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ibsight-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="footer.png" alt="Want more of ibsight?" class="footer-logo">
+        <div class="subscribe-section">
+          <input type="email" id="newsletterEmail" placeholder="Later they will input their email here">
+          <button onclick="redirectToNewsletter()">Subscribe</button>
+        </div>
+        <script>
+          function redirectToNewsletter() {
+            // Optionally you could validate the email here
+            const email = document.getElementById("newsletterEmail").value;
+            if (email.trim() !== "") {
+              window.location.href = "newsletter.html";
+            } else {
+              alert("Please enter a valid email address.");
+            }
+          }
+        </script>
+        <div class="get-started">
+          <h4>GET STARTED</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Plan.it</a></li>
+            <li><a href="#">University Tracker</a></li>
+            <li><a href="#">Scholar's Shelf</a></li>
+            <li><a href="#">DP Core</a></li>
+          </ul>
+          <p>© 2025 ibsight. All rights reserved.</p>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="socials">
+          <p>Stay connected with us!!</p>
+          <div class="icons">
+            <a href="#"><img src="footer (3).png" alt="Mail"></a>
+            <a href="#"><img src="13.png" alt="Instagram"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

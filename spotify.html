@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ibsight Spotify Playlists</title>
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    background: white;
+}
+
+.background-aura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 40% 40%, rgba(73, 37, 255, 0.2) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar .logo {
+    width: 100px;
+    height: auto;
+}
+
+.navbar nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    border: 2px solid navy;
+    color: navy;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.left-section {
+    max-width: 50%;
+}
+
+.title-image {
+    margin-top: -120px;
+    width: 450px;
+    height: auto;
+}
+
+.follow-container {
+    position: relative;
+    width: 290px;
+    margin-left: 130px;
+}
+
+.follow-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: -68px;
+}
+
+.follow-button img {
+    width: 290px;
+    height: auto;
+    display: block;
+    z-index: 1;
+    margin-left: -120px;
+    margin-top: -140px;
+}
+
+
+.playlist-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    
+}
+
+.playlist-buttons button {
+    border: 2px solid navy;
+    border-radius: 20px;
+    background: transparent;
+    color: navy;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.playlist-buttons button:hover {
+    background: navy;
+    color: white;
+}
+
+.right-section {
+    width: 30%;
+}
+
+.recommended-card {
+    display: block;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: white;
+    font-family: "Circular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.recommended-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.recommended-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.recommended-card h2 {
+    font-size: 30px;
+    margin: 8px 0 4px 0;
+    color: white;
+}
+
+.recommended-card p {
+    font-size: 15px;
+    color: #b3b3b3;
+}
+
+.album-cover {
+    width: 100%;
+    padding-top: 0%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.playlist-grid {
+    display: flex;
+    gap: 50px 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px 0;
+    padding: 0 100px;
+}
+
+.playlist-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: rgb(0, 0, 0);
+    width: 352px;
+}
+
+.playlist-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cover {
+    width: 100%;
+    height: 200px;
+    background-color: #84d6b6;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.playlist-container h3 {
+    font-family: "Circular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin: 8px 0 4px 0;
+}
+
+.playlist-container p {
+    font-size: 13px;
+    color: #000000;
+    margin: 0;
+}
+
+iframe {
+    position: relative;
+    z-index: 2;
+}
+
+.ibsight-footer {
+      background: linear-gradient(175deg, #000080, #1a1aff);
+      color: white;
+      padding: 100px 150px;
+      font-family: 'Poppins', sans-serif;
+      width: 1450px;
+      height: 650px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      max-width: 50%;
+    }
+
+    .footer-logo {
+      width: 600px;
+      margin-bottom: -100px;
+      margin-top: -200px;
+      margin-left: 10px;
+    }
+
+    .footer-left p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: 50px;
+      margin-top: -100px;
+    }
+
+    .subscribe-section input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      padding: 8px;
+      width: 300px;
+      outline: none;
+    }
+
+    .subscribe-section input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .subscribe-section button {
+      background: white;
+      color: #000080;
+      padding: 10px 25px;
+      border-radius: 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .get-started {
+      margin-top: 50px;
+      margin-left: 50px;
+      text-align: left;
+    }
+
+    .get-started h4 {
+      font-weight: bold;
+    }
+
+    .get-started ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .get-started ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .get-started ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .get-started p {
+      margin-top: 20px;
+      font-size: 0.8rem;
+    }
+
+    .socials {
+      margin-top: 375px;
+    }
+
+    .socials p {
+      font-style: italic;
+    }
+
+    .icons a img {
+      gap: 1rem;
+      width: 30px;
+      margin-left: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+</style>
+</head>
+
+<body>
+  <div class="background-aura"></div>
+
+  <header class="navbar">
+      <img src="ibsight logo blue.png" alt="IBsight Logo" class="logo">
+      <nav>
+        <a href="home.html">🏠 Home</a>
+        <a href="planit.html">📄 Plan.it</a>
+        <a href="unitracker.html">🎓 University Planner</a>
+        <a href="scholarsshelf.html">📚 Scholar's Shelf</a>
+        <a href="dpcore.html">🌿 DP Core</a>
+        <a href="spotify.html">🎵 Spotify Playlists</a>
+        <a href="newsletter.html">📰 Newsletter</a>
+    </nav>
+  </header>
+
+  <main class="content">
+      <div class="left-section">
+          <img src="title page.png" alt="Spotify Playlists Title" class="title-image">
+
+        <div class="follow-container">
+          <p class="follow-text">ibsight on spotify :))</p>
+          <a href="https://open.spotify.com/" target="_blank" class="follow-button">
+            <img src="follow ibsight on spotify.png" alt="Follow IBsight on Spotify">
+          </a>
+        </div>
+
+          <div class="playlist-buttons">
+              <a href="https://open.spotify.com/album/0JBvuEERgY6CCNcbmka9yA?si=10FbAGdUT1CWyKC2B_fzEg" target="_blank"><button>Falling In Between Live Paris 2007</button></a>
+              <a href="https://open.spotify.com/playlist/3i9C34yaDZBDzAT1yyPXCu?si=201e04a9c57b4be8/" target="_blank"><button>KNOW-IT-ALL</button></a>
+              <a href="https://open.spotify.com/playlist/7ES9xofkx51nCrAwy6GDh3?si=545c96fc86a94695&pt=468d217411684a1742e68f7afaf76db6" target="_blank"><button>Stop Crying Your Heart Out</button></a>
+              <a href="https://open.spotify.com/playlist/55SLZFfPMmOYL473krRUYY?si=05c5c0cd04b54975" target="_blank"><button>Lagu Lagu Arab</button></a>
+              <a href="https://open.spotify.com/playlist/0aptmoz3HW357lgyDbNb0a?si=b4debd6e17824231" target="_blank"><button>Lagu Lagu Indo</button></a>
+          </div>
+      </div>
+
+      <div class="right-section">
+        <div class="recommended-card" style="padding:0;">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3o03jbdeVmxoNE76OlFNZu?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+  </main>
+
+  <section class="playlist-grid">
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6zpCD1qKnNMnj5Mkc76Qml?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <a href="https://open.spotify.com/embed/playlist/6zpCD1qKnNMnj5Mkc76Qml?utm_source=generator" target="_blank"></a>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3ko3TRuexS1MbVsBMXVw8k?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2cLlZ5OJJhpUQH81tIuOj4?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5BTFgBKaHZFS8LhDGNjiqv?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4OfZ9jjwOHKMwP2OIXd5uG?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4BFAliuIkVWm4lAkfNPQ4p?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1Tt9oWIxJIOLN8ZZT0hb2X?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/646ARYxSR3yX9aqygFnz9N?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="playlist-container">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1x4lXu1XGzKZWXyTpisQod?utm_source=generator" width="100%" height="380" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+</section>
+
+<footer class="ibsight-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="footer.png" alt="Want more of ibsight?" class="footer-logo">
+        <div class="subscribe-section">
+          <input type="email" id="newsletterEmail" placeholder="Later they will input their email here">
+          <button onclick="redirectToNewsletter()">Subscribe</button>
+        </div>
+        <script>
+          function redirectToNewsletter() {
+            // Optionally you could validate the email here
+            const email = document.getElementById("newsletterEmail").value;
+            if (email.trim() !== "") {
+              window.location.href = "newsletter.html";
+            } else {
+              alert("Please enter a valid email address.");
+            }
+          }
+        </script>
+        <div class="get-started">
+          <h4>GET STARTED</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Plan.it</a></li>
+            <li><a href="#">University Tracker</a></li>
+            <li><a href="#">Scholar's Shelf</a></li>
+            <li><a href="#">DP Core</a></li>
+          </ul>
+          <p>© 2025 ibsight. All rights reserved.</p>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="socials">
+          <p>Stay connected with us!!</p>
+          <div class="icons">
+            <a href="#"><img src="footer (3).png" alt="Mail"></a>
+            <a href="#"><img src="13.png" alt="Instagram"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

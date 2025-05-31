@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ibsight Newsletter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            position: relative;
+            min-height: 100vh;
+            background: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .navbar nav a {
+            margin-left: 15px;
+            text-decoration: none;
+            border: 2px solid navy;
+            color: navy;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ibsight-footer {
+      background: linear-gradient(175deg, #000080, #1a1aff);
+      color: white;
+      padding: 100px 150px;
+      font-family: 'Poppins', sans-serif;
+      width: 1450px;
+      height: 650px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      max-width: 50%;
+    }
+
+    .footer-logo {
+      width: 600px;
+      margin-bottom: -100px;
+      margin-top: -200px;
+      margin-left: 10px;
+    }
+
+    .footer-left p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: 50px;
+      margin-top: -100px;
+    }
+
+    .subscribe-section input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      padding: 8px;
+      width: 300px;
+      outline: none;
+    }
+
+    .subscribe-section input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .subscribe-section button {
+      background: white;
+      color: #000080;
+      padding: 10px 25px;
+      border-radius: 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .get-started {
+      margin-top: 50px;
+      margin-left: 50px;
+      text-align: left;
+    }
+
+    .get-started h4 {
+      font-weight: bold;
+    }
+
+    .get-started ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .get-started ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .get-started ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .get-started p {
+      margin-top: 20px;
+      font-size: 0.8rem;
+    }
+
+    .socials {
+      margin-top: 375px;
+    }
+
+    .socials p {
+      font-style: italic;
+    }
+
+    .icons a img {
+      gap: 1rem;
+      width: 30px;
+      margin-left: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Newsletter Section */
+.newsletter {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.newsletter-title,
+.newsletter-desc {
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.newsletter-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.form-img {
+  width: 400px;
+}
+
+.form-icon {
+  width: 150px;
+  margin-left: 525px;
+  margin-top: -200px;
+}
+
+/* Opportunities Grid */
+.opportunities {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.opportunities-header {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.opportunity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Resources */
+.resources {
+  padding: 60px 20px;
+  background: url('ibsight resources bg.png') repeat center center / cover;
+  text-align: center;
+}
+
+.resources-header {
+  margin-left: 290px;
+  margin-top: -250px;
+  width: 60%;
+}
+
+.resources-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.newsletter-container {
+  margin-top: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#newsletterForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 300px;
+}
+
+#newsletterForm input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  color: #000879;
+  font-size: 16px;
+  outline: none;
+}
+
+#newsletterForm button {
+  padding: 12px 24px;
+  background-color: transparent;
+  border: 2px solid #000879;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+#newsletterForm button:hover {
+  background-color: #000879;
+  color: #ffffff;
+}
+
+.newsletter-section {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  color: #000066;
+  font-family: 'Arial', sans-serif;
+}
+
+.newsletter-title {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin-top: -200px;
+  margin-left: 0px;
+}
+
+.newsletter-description {
+  max-width: 40%;
+  height: auto;
+  display: block;
+  margin-top: -600px;
+  margin-left: 80px; 
+}
+
+.newsletter-form {
+  font-family: sans-serif;
+  color: #000066;
+  width: 90%;
+  max-width: 500px;
+  margin: 0;
+  padding-left: 100px;
+  margin-top: -250px;
+}
+
+.newsletter-form label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 6px 0;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-bottom: 3px solid #000066;
+  background-color: transparent;
+  font-size: 1rem;
+  color: #000066;
+}
+
+.name-fields {
+  display: flex;
+  gap: 2rem;
+}
+
+.name-fields div {
+  flex: 1;
+}
+
+.newsletter-form button {
+  background-color: #000066;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-left: -10px;
+}
+
+.newsletter-form button:hover {
+  background-color: #000099;
+}
+
+.playlist-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  background: rgb(0, 0, 0);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+.opportunities-header {
+  max-width: 67%;
+  height: auto;
+  display: block;
+  margin-top: -260px;
+  margin-left: 70px;
+}
+
+.opportunities {
+  padding: 40px;
+  text-align: center;
+}
+
+.opportunities-header {
+  max-width: 60%;
+  height: auto;
+  margin-bottom: 40px;
+  margin-top: -30px;
+}
+
+.opportunity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: -300px;
+}
+
+.opportunity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  color: #0c0a60;
+  padding: 10px;
+}
+
+.card-image {
+  width: 200px;
+  height: 200px;
+  background-color: #1a1558;
+  border-radius: 1rem;
+  margin-bottom: 10px;
+}
+
+.opportunity-card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.opportunity-card p {
+  font-size: 12px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.opp-button {
+  background-color: #0c0a60;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.opp-button .arrow {
+  font-size: 14px;
+  font-variant: bold;
+}
+
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <img src="ibsight logo blue.png" alt="IBsight Logo" class="logo">
+    <nav>
+        <a href="home.html">🏠 Home</a>
+        <a href="planit.html">📄 Plan.it</a>
+        <a href="unitracker.html">🎓 University Planner</a>
+        <a href="scholarsshelf.html">📚 Scholar's Shelf</a>
+        <a href="dpcore.html">🌿 DP Core</a>
+        <a href="spotify.html">🎵 Spotify Playlists</a>
+        <a href="newsletter.html">📰 Newsletter</a>
+    </nav>
+</header>
+
+<main>
+
+  <section class="newsletter-section">
+    <img src="title (2).png" alt="Subscribe to our weekly Newsletter!" class="newsletter-title" />
+    <img src="header text.png" alt="Every FRIDAY, we send our a newsletter..." class="newsletter-description" />
+  
+    <form class="newsletter-form">
+      <input type="email" id="email" placeholder="Email" required>
+    
+      <div class="name-fields">
+        <div>
+          <input type="text" id="firstName" placeholder="First Name" required>
+        </div>
+        <div>
+          <input type="text" id="lastName" placeholder="Last Name" required>
+        </div>
+      </div>
+    
+      <button href="post-newsletter.html" type="submit">Sign me up!</button>
+    </form>    
+    <img src="silver 1.png" alt="Newsletter Icon" class="form-icon">
+  </section>
+
+  <section class="opportunities">
+    <img src="p2.png" alt="Opportunities Header" class="opportunities-header" />
+  
+    <div class="opportunity-grid">
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+  
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+  
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+  
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+  
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+  
+      <div class="opportunity-card">
+        <div class="card-image"></div>
+        <h3>Opportunity Name</h3>
+        <p>description stuff description stuff/description</p>
+        <a href="#" class="opp-button">Check it out <span class="arrow">↗</span></a>
+      </div>
+
+    </div>
+  </section>
+  
+
+  <section class="resources">
+    <img src="ibsight resources.png" alt="Resources Header" class="resources-header">
+
+    <div class="resources-grid">
+      <img src="res1.png" alt="Resource 1">
+      <img src="res2.png" alt="Resource 2">
+      <img src="res3.png" alt="Resource 3">
+      <img src="res4.png" alt="Resource 4">
+      <img src="res5.png" alt="Resource 5">
+    </div>
+  </section>
+  </section>
+  
+
+</main>
+
+<footer class="ibsight-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="footer.png" alt="Want more of ibsight?" class="footer-logo">
+        <div class="subscribe-section">
+          <input type="email" id="newsletterEmail" placeholder="Later they will input their email here">
+          <button onclick="redirectToNewsletter()">Subscribe</button>
+        </div>
+        <script>
+          function redirectToNewsletter() {
+            const email = document.getElementById("newsletterEmail").value;
+            if (email.trim() !== "") {
+              window.location.href = "newsletter.html";
+            } else {
+              alert("Please enter a valid email address.");
+            }
+          }
+        </script>
+        <div class="get-started">
+          <h4>GET STARTED</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Plan.it</a></li>
+            <li><a href="#">University Tracker</a></li>
+            <li><a href="#">Scholar's Shelf</a></li>
+            <li><a href="#">DP Core</a></li>
+          </ul>
+          <p>© 2025 ibsight. All rights reserved.</p>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="socials">
+          <p>Stay connected with us!!</p>
+          <div class="icons">
+            <a href="#"><img src="footer (3).png" alt="Mail"></a>
+            <a href="#"><img src="13.png" alt="Instagram"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

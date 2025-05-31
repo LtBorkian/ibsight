@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ibsight Splash</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+      background-color: #001C85;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 20px;
+      border-radius: 25px;
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      transition: 0.3s ease-in-out;
+      white-space: nowrap;
+    }
+
+    .navbar a:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #001C85;
+    }
+
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #001C85 30%, rgba(255, 255, 255, 0.4) 50%, #001C85 70%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero .logo {
+      width: 100%;
+      max-width: 1250px;
+      filter: drop-shadow(2px 2px 20px rgba(255, 255, 255, 0.6));
+    }
+
+    .hero .arrow {
+      position: absolute;
+      left: 21%;
+      top: 27%;
+      width: 220px;
+    }
+
+    .hero .star {
+      position: absolute;
+      right: 29%;
+      top: 25%;
+      width: 240px;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .button {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .signin {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .signup {
+      background: rgba(255, 255, 255, 0.9);
+      color: #001C85;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+    }
+
+    .signin:hover,
+    .signup:hover {
+      background: white;
+      color: #001C85;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+    .icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .icon-box {
+      width: 150px;
+      text-align: center;
+    }
+
+    .icon-box img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .playlists {
+      background-image: url(ibsight\'s\ playlist\ bg.png);
+
+    }
+
+    .playlist-circle {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .playlist-circle img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .playlist-circle img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .testimonial-box {
+      max-width: 600px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #000E42;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-icons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .footer-icons img {
+      width: 30px;
+      height: 30px;
+      filter: brightness(0) invert(1);
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .footer-icons img:hover {
+      transform: scale(1.2);
+    }
+
+    .newsletter input {
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      margin-top: 10px;
+      width: 250px;
+    }
+
+    .newsletter button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: white;
+      color: #001C85;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .newsletter button:hover {
+      background-color: #ccc;
+    }
+
+    #about {
+      background-color: white;
+      color: #001C85;
+    }
+
+    .about-us {
+      position: relative;
+      background: linear-gradient(to bottom, #ffffff, #e0e5ff);
+      padding: 100px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .big-text {
+      position: absolute;
+      top: -40px;
+      right: -350px;
+      height: 900px;
+    }
+
+    .bigtext {
+      position: absolute;
+      top: -175px;
+      left: -30px;
+      width: 400px;
+    }
+
+    .paper {
+      position: relative;
+      max-width: 800px;
+    }
+
+    .paper-bg {
+      width: 100%;
+      display: block;
+    }
+
+    .paperclip {
+      position: absolute;
+      top: 15px;
+      left: -2px;
+      width: 125px;
+    }
+
+    .starburst {
+      position: absolute;
+      bottom: 12px;
+      left: 40px;
+      width: 120px;
+      z-index: 1;
+    }
+
+    .flip-phone {
+      position: absolute;
+      bottom: -70px;
+      left: -10px;
+      width: 450px;
+    }
+
+    .flip-phone img {
+      width: 200px;
+      transform: rotate(-10deg);
+    }
+
+    .speech-bubble {
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      width: 140px;
+    }
+
+    .vertical-text {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      width: 200px;
+      z-index: 1;
+    }
+
+    .aura {
+      position: absolute;
+      bottom: -30px;
+      left: -450px;
+      width: 600px;
+      height: 1000px;
+    }
+
+    .aura2 {
+      position: absolute;
+      top: -30px;
+      right: -450px;
+      width: 600px;
+      height: 1000px;
+      transform: rotate(175deg);
+    }
+
+    .essentials {
+      position: relative;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+    }
+
+    .essentials-title {
+      width: 70%;
+      display: block;
+      margin: 0 auto 2rem auto;
+    }
+
+    .essentials-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    /* PLAN.IT section */
+    .planit .image {
+      width: 30%;
+      margin-left: 1rem;
+    }
+
+    .planit .title {
+      width: 20%;
+      margin-bottom: 0.5rem;
+    }
+
+    .planit .text {
+      width: 45%;
+    }
+
+    .planit .arrow {
+      position: absolute;
+      left: 32%;
+      top: 50%;
+      width: 60px;
+    }
+
+    .uniplanner {
+      justify-content: flex-start;
+    }
+
+    .uniplanner .title {
+      width: 10%;
+      margin-right: 1rem;
+    }
+
+    .uniplanner .text {
+      width: 45%;
+    }
+
+    .scholars .title {
+      width: 20%;
+      margin-right: 1rem;
+    }
+
+    .scholars .text {
+      width: 45%;
+    }
+
+    .scholars .image {
+      width: 30%;
+      margin-left: 1rem;
+    }
+
+    .dpcore .title {
+      width: 15%;
+      margin-right: 1rem;
+    }
+
+    .dpcore .text {
+      width: 45%;
+    }
+
+    .decorative-blob {
+      position: absolute;
+      z-index: -1;
+    }
+
+    .blob1 {
+      top: 12%;
+      right: -5%;
+      width: 300px;
+    }
+
+    .blob2 {
+      top: 65%;
+      left: -5%;
+      width: 250px;
+    }
+
+    .playlists-section {
+      background: url('') center/cover no-repeat;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .playlists-section h1 {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-text {
+      font-weight: bold;
+    }
+
+    .playlist-text {
+      font-style: italic;
+    }
+
+    .subtitle {
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+    }
+
+    .playlist-cards {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .playlist-cards .card {
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      width: 300px;
+      height: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .playlist-cards .card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .playlist-button {
+      display: inline-block;
+      background: navy;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .playlist-button:hover {
+      background: #001f4d;
+    }
+
+    .testimonials-section {
+      padding: 4rem 2rem;
+      max-width: 100%;
+      margin: auto;
+      background-color: #ffffff;
+    }
+
+    .testimonials-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 10rem;
+      margin-right: 10rem;
+      text-align: left;
+    }
+
+    .testimonials-header h2 {
+      font-size: 2.5rem;
+      color: navy;
+      line-height: 1.2;
+    }
+
+    .testimonials-header em {
+      font-style: italic;
+    }
+
+    .more-testimonials {
+      background: navy;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .more-testimonials:hover {
+      background: #001f4d;
+    }
+
+    .testimonial {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin: 2rem 2rem;
+      margin-left: 10rem;
+      margin-right: 10rem;
+      text-align: left;
+    }
+
+    .name-tag {
+      display: inline-block;
+      background: navy;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .testimonial p {
+      flex: 1;
+      margin: 0;
+      color: navy;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .ibsight-footer {
+      background: linear-gradient(175deg, #000080, #1a1aff);
+      color: white;
+      padding: 100px 150px;
+      font-family: 'Poppins', sans-serif;
+      width: 1450px;
+      height: 650px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-left {
+      max-width: 50%;
+    }
+
+    .footer-logo {
+      width: 600px;
+      margin-bottom: -100px;
+      margin-top: -200px;
+      margin-left: 10px;
+    }
+
+    .footer-left p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: 50px;
+      margin-top: -100px;
+    }
+
+    .subscribe-section input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      padding: 8px;
+      width: 300px;
+      outline: none;
+    }
+
+    .subscribe-section input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .subscribe-section button {
+      background: white;
+      color: #000080;
+      padding: 10px 25px;
+      border-radius: 25px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .get-started {
+      margin-top: 50px;
+      margin-left: 50px;
+      text-align: left;
+    }
+
+    .get-started h4 {
+      font-weight: bold;
+    }
+
+    .get-started ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .get-started ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .get-started ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .get-started p {
+      margin-top: 20px;
+      font-size: 0.8rem;
+    }
+
+    .socials {
+      margin-top: 375px;
+    }
+
+    .socials p {
+      font-style: italic;
+    }
+
+    .icons a img {
+      gap: 1rem;
+      width: 30px;
+      margin-left: 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="signup.html">Home</a>
+    <a href="signup.html">Plan.it</a>
+    <a href="signup.html">University Tracker</a>
+    <a href="signup.html">Scholar's Shelf</a>
+    <a href="signup.html">DP Core</a>
+    <a href="signup.html">Spotify Playlists</a>
+    <a href="signup.html">Newsletter</a>
+  </div>
+
+  <section class="hero" id="home">
+    <img src="ibsight logo vertical.png" alt="IBsight Logo" class="logo">
+    <img src="arrow.png" alt="Arrow" class="arrow">
+    <img src="star.png" alt="Starburst" class="star">
+    <div class="buttons">
+      <a href="signin.html" class="button signin">Sign In</a>
+      <a href="signup.html" class="button signup">Sign Up</a>
+    </div>
+  </section>
+
+  <section class="about-us">
+    <div class="paper">
+      <img src="about us paper.png" alt="Torn Paper Background" class="paper-bg">
+      <img src="abt us paper clip.png" alt="Paperclip" class="paperclip">
+      <img src="abt us silver 2.png" alt="Starburst Icon" class="starburst">
+      <img src="abt us phone.png" alt="Retro Flip Phone" class="flip-phone">
+      <img src="abt us text 1.png" alt="Vertical Text" class="big-text">
+      <img src="abt us text2.png" alt="Horizontal Text" class="bigtext">
+      <img src="behind phone aura.png" alt="Background Aura" class="aura">
+      <img src="behind paper aura.png" alt="Background Aura" class="aura2">
+    </div>
+  </section>
+
+  <section class="essentials">
+    <img src="ibsights essentials.png" alt="IBSight Essentials Title" class="essentials-title">
+
+    <div class="essentials-item planit">
+      <img src="plan.it text.png" alt="Plan.it Description" class="text">
+      <img src="planit button.png" alt="Plan.it Title" class="title">
+      <img src="ibsight essentials planit 1.png" alt="Plan.it Illustration" class="image">
+      <img src="ibsight essentials planit 1 (2).png" alt="Arrow Icon" class="arrow">
+    </div>
+
+    <div class="essentials-item uniplanner">
+      <img src="uniplanner button.png" alt="University Planner Title" class="title">
+      <img src="uni planner text.png" alt="University Planner Description" class="text">
+    </div>
+
+    <div class="essentials-item scholars">
+      <img src="scholars shelf button.png" alt="Scholar's Shelf Title" class="title">
+      <img src="scholars shelf text.png" alt="Scholar's Shelf Description" class="text">
+      <img src="ibsight essentials scholars shelf 1.png" alt="Scholar's Shelf Illustration" class="image">
+    </div>
+
+    <div class="essentials-item dpcore">
+      <img src="dpcore button.png" alt="DP Core Title" class="title">
+      <img src="dp core text.png" alt="DP Core Description" class="text">
+    </div>
+
+    <img src="ibsight essentials blue 1.png" alt="Decorative Blob" class="decorative-blob blob1">
+    <img src="ibsight essentials blue 2.png" alt="Decorative Blob" class="decorative-blob blob2">
+  </section>
+
+  <section class="playlists-section">
+    <h1><span class="logo-text">IBsight's</span> <span class="playlist-text">playlists</span></h1>
+    <p class="subtitle">CHOOSE YOUR FIGHTER!</p>
+    <div class="playlist-cards">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+    <a href="spotify.html" class="playlist-button">Listen To All Playlists</a>
+  </section>
+
+
+  <section class="testimonials-section">
+    <div class="testimonials-header">
+      <h2>But wait,<br>can we really <em>help you?</em></h2>
+      <a href="#" class="more-testimonials">More Testimonials ↗</a>
+    </div>
+
+    <div class="testimonial">
+      <span class="name-tag">Aurelie Vidal</span>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut lacus posuere ipsum volutpat vehicula.
+        Vestibulum viverra in velit vel blandit. Donec at rutrum lorem, dignissim tristique massa. Nam accumsan lectus
+        sed quam venenatis the rel twins made this rhoncus sed vel urna. Fusce bibendum pretium egestas. Nulla facilisi.
+        Morbi aliquet pulvinar felis vitae elementum. Fusce nec leo orci. Fusce cursus quis tellus nec consectetur.
+        Nullam vitae sagittis felis. Nulla at nibh eget sem imperdiet bibendum quis vitae nulla.</p>
+    </div>
+
+    <div class="testimonial">
+      <span class="name-tag">Aurelio Nugraha</span>
+      <p>Praesent tincidunt semper vehicula. Sed dignissim felis non mollis faucibus. Nulla sit amet velit ut arcu
+        varius posuere. Phasellus tristique metus a fringilla malesuada. Mauris elementum dolor leo, eu rutrum ex tempor
+        et. Nam dapibus dictum nisl, the rel twins made this non sagittis dui convallis eu. Morbi dignissim rutrum
+        elementum. Quisque nec blandit est. Suspendisse gravida augue sapien, non consequat dolor fringilla congue.
+        Maecenas condimentum lectus vitae mauris pulvinar lobortis.</p>
+    </div>
+
+    <div class="testimonial">
+      <span class="name-tag">Aurelieo Vigraha</span>
+      <p>Sed nec lacinia orci. Ut lacinia ligula sed metus imperdiet feugiat. Vestibulum porta, mi id euismod gravida,
+        eros orci sagittis nunc, quis tempus nisi est a lorem. Sed quis consequat velit. The rel twins made this duis
+        aliquet ac risus sit amet fringilla.</p>
+    </div>
+  </section>
+
+
+  <footer class="ibsight-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <img src="footer.png" alt="Want more of ibsight?" class="footer-logo">
+        <div class="subscribe-section">
+          <input type="email" placeholder="Later they will input their email here">
+          <button>Subscribe</button>
+        </div>
+        <div class="get-started">
+          <h4>GET STARTED</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Plan.it</a></li>
+            <li><a href="#">University Tracker</a></li>
+            <li><a href="#">Scholar's Shelf</a></li>
+            <li><a href="#">DP Core</a></li>
+          </ul>
+          <p>© 2025 ibsight. All rights reserved.</p>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="socials">
+          <p>Stay connected with us!!</p>
+          <div class="icons">
+            <a href="#"><img src="footer (3).png" alt="Mail"></a>
+            <a href="#"><img src="13.png" alt="Instagram"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
