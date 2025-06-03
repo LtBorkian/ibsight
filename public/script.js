@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       console.log("Sign-up form submitted!");
 
-      const name = document.getElementById("name").value;
+      const name = document.getElementById("fullname").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       const confirmPassword = document.getElementById("confirmPassword").value;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         await updateProfile(user, { displayName: name });
 
         alert("Account created successfully!");
-        window.location.href = "signin.html"; // Redirect to sign-in page
+        window.location.href = "home.html";
       } catch (error) {
         console.error("Error signing up:", error);
         alert("Sign-up failed: " + error.message);
